@@ -5,5 +5,5 @@
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		p:driverClass="com.mysql.jdbc.Driver" p:jdbcUrl="jdbc:mysql://localhost:3306/spring-cas"
-		p:user="root" p:password="root" />
+		p:user="root" p:password="" />
 </beans>

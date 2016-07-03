@@ -22,7 +22,6 @@
        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-
 	<util:map id="authenticationHandlersResolvers">
 		<entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" />
 		<entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />
@@ -50,7 +49,8 @@
 
 	<alias name="dataSource" alias="queryEncodeDatabaseDataSource" />
 
-	<bean id="md5PasswordEncoder" class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder"
+	<bean id="md5PasswordEncoder"
+		class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder"
 		p:characterEncoding="UTF-8">
 		<constructor-arg index="0" value="MD5" />
 	</bean>
@@ -73,7 +73,16 @@
 
 	<alias name="serviceThemeResolver" alias="themeResolver" />
 
-	<alias name="jsonServiceRegistryDao" alias="serviceRegistryDao" />
+	<alias name="inMemoryServiceRegistryDao" alias="serviceRegistryDao" />
+	
+	<bean id="inMemoryServiceRegistryDao" class="org.jasig.cas.services.InMemoryServiceRegistryDaoImpl"
+		p:registeredServices-ref="registeredServicesList" />
+
+	<util:list id="registeredServicesList">
+		<bean class="org.jasig.cas.services.RegexRegisteredService" p:id="1"
+			p:name="cas-client" p:serviceId="http://localhost:8080/.*"
+			p:evaluationOrder="0" />
+	</util:list>
 
 	<alias name="defaultTicketRegistry" alias="ticketRegistry" />
 

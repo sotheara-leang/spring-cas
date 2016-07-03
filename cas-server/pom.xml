@@ -27,6 +27,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jasig.cas</groupId>
+			<artifactId>cas-server-core</artifactId>
+			<version>${cas.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jasig.cas</groupId>
 			<artifactId>cas-server-support-jdbc</artifactId>
 			<version>${cas.version}</version>
 		</dependency>
@@ -59,7 +65,6 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
-					<warName>cas</warName>
 					<overlays>
 						<overlay>
 							<groupId>org.jasig.cas</groupId>
