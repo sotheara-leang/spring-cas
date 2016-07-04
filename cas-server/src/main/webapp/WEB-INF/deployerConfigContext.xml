@@ -39,6 +39,8 @@
 	<alias name="authenticationHandler" alias="primaryAuthenticationHandler" />
 	<alias name="personDirectoryPrincipalResolver" alias="primaryPrincipalResolver" />
 	<alias name="md5PasswordEncoder" alias="passwordEncoder" />
+	
+	<alias name="dataSource" alias="queryEncodeDatabaseDataSource" />
 
 	<bean id="authenticationHandler"
 		class="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler">
@@ -46,8 +48,6 @@
 		<property name="sql" value="${cas.jdbc.authn.query.sql}" />
 		<property name="passwordEncoder" ref="passwordEncoder" />
 	</bean>
-
-	<alias name="dataSource" alias="queryEncodeDatabaseDataSource" />
 
 	<bean id="md5PasswordEncoder"
 		class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder"

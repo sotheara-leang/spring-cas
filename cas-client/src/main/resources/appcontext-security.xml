@@ -15,6 +15,5 @@
 		<security:logout logout-success-url="/logout"/>
 		
 		<security:csrf disabled="true"/>
-		
 	</security:http>
 </beans>

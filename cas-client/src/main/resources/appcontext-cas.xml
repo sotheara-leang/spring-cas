@@ -5,8 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-
-
+		
 	<context:property-placeholder
 		location="classpath:cas.properties" />
 
@@ -22,9 +21,7 @@
 	</bean>
 
 	<security:authentication-manager alias="authenticationManager">
-		<security:authentication-provider
-			ref="casAuthenticationProvider"  />
-			
+		<security:authentication-provider ref="casAuthenticationProvider"  />
 	</security:authentication-manager>
 
 	<bean id="casAuthenticationFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
@@ -73,8 +70,7 @@
 		class="org.springframework.security.web.authentication.logout.LogoutFilter">
 		<constructor-arg value="${cas.server.url}/logout" />
 		<constructor-arg>
-			<bean
-				class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" />
+			<bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" />
 		</constructor-arg>
 		<property name="filterProcessesUrl" value="/logout" />
 	</bean>
