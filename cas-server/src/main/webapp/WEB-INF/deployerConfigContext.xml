@@ -81,8 +81,11 @@
 	<util:list id="registeredServicesList">
 		<bean class="org.jasig.cas.services.RegexRegisteredService" p:id="1"
 			p:name="cas-client" p:serviceId="http://localhost:8080/.*"
-			p:evaluationOrder="0" />
+			p:evaluationOrder="0" p:proxyPolicy-ref="proxyPolicy" />
 	</util:list>
+	
+	<bean id="proxyPolicy" class="org.jasig.cas.services.RegexMatchingRegisteredServiceProxyPolicy"
+		c:pgtUrlPattern="http://localhost:8080/.*" />
 
 	<alias name="defaultTicketRegistry" alias="ticketRegistry" />
 
