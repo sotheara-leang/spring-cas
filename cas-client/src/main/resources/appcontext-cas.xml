@@ -6,16 +6,14 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 		
-	<context:property-placeholder
-		location="classpath:cas.properties" />
+	<context:property-placeholder location="classpath:cas.properties" />
 
 	<bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
-		<property name="service" value="${cas.client.url}/j_spring_cas_security_check" />
+		<property name="service" value="${cas.client.url}/login/cas" />
 		<property name="sendRenew" value="false" />
 	</bean>
 
-	<bean id="casEntryPoint"
-		class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+	<bean id="casEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
 		<property name="loginUrl" value="${cas.server.url}/login" />
 		<property name="serviceProperties" ref="serviceProperties" />
 	</bean>
@@ -43,22 +41,7 @@
 			</bean>
 		</property>
 		<property name="key" value="sample-cas" />
-		<!-- <property name="statelessTicketCache" ref="statelessTicketCache"/> -->
 	</bean>
-
-	<!-- <bean id="statelessTicketCache"
-		class="org.springframework.security.cas.authentication.EhCacheBasedTicketCache">
-		<property name="cache">
-			<bean class="net.sf.ehcache.Cache" init-method="initialise" destroy-method="dispose">
-				<constructor-arg value="casTickets" />
-				<constructor-arg value="50" />
-				<constructor-arg value="true" />
-				<constructor-arg value="false" />
-				<constructor-arg value="3600" />
-				<constructor-arg value="900" />
-			</bean>
-		</property>
-	</bean> -->
 
 	<security:user-service id="userService">
 		<security:user name="admin" password="123" authorities="ROLE_ADMIN" />
